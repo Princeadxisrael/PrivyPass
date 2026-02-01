@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# keys and secrets
+.keys/
+*.json
+!package.json
+!tsconfig.json
+!token-config.json

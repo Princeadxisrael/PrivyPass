@@ -1,0 +1,9 @@
+{
+  "network": "devnet",
+  "mintAddress": "E5A7QX2yeLSVghFFz9HyLzcoPFPcXyuMVEZpnVoYLPMQ",
+  "mintAuthority": "E7AWmRuro7AAkHy1YALVz46Vbuny4qLgkyaVaZnR7yQL",
+  "decimals": 2,
+  "tokenProgram": "Token-2022",
+  "note": "Simplified mint without CT extension due to TypeScript limitations. See TYPESCRIPT_LIMITATIONS.md",
+  "createdAt": "2026-02-02T09:30:00.411Z"
+}

@@ -64,12 +64,35 @@ async function createPassToken() {
     );
     
     console.log('💰 Airdropping SOL to mint authority...');
-    const airdropSig = await connection.requestAirdrop(
-      mintAuthority.publicKey,
-      2 * 1e9 // 2 SOL
-    );
-    await connection.confirmTransaction(airdropSig);
-    console.log('   ✅ Airdropped 2 SOL\n');
+    let airdropSuccess = false;
+    let attempts = 0;
+    const maxAttempts = 3;
+    
+    while (!airdropSuccess && attempts < maxAttempts) {
+      attempts++;
+      try {
+        console.log(`   Attempt ${attempts}/${maxAttempts}...`);
+        const airdropSig = await connection.requestAirdrop(
+          mintAuthority.publicKey,
+          2 * 1e9 // 2 SOL
+        );
+        await connection.confirmTransaction(airdropSig);
+        console.log('   ✅ Airdropped 2 SOL\n');
+        airdropSuccess = true;
+      } catch (error) {
+        console.log(`   ❌ Airdrop attempt ${attempts} failed`);
+        if (attempts < maxAttempts) {
+          console.log('   ⏳ Waiting 2 seconds before retry...');
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        } else {
+          console.log('\n⚠️  Airdrop failed after 3 attempts.');
+          console.log('   Please manually airdrop SOL using:');
+          console.log(`   solana airdrop 2 ${mintAuthority.publicKey.toBase58()} --url devnet`);
+          console.log('   Or use: https://faucet.solana.com/\n');
+          throw new Error('Airdrop failed. Please fund the mint authority manually and try again.');
+        }
+      }
+    }
   }
 
   console.log('Payer/Mint Authority:', mintAuthority.publicKey.toBase58());

@@ -1,37 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Private Pass 🔐
 
-## Getting Started
+Token-gated access with zero-knowledge proofs on Solana. Prove your access while being fully private.
 
-First, run the development server:
+## What This Does
+
+This demo showcases the **concept** of confidential token-gated access on Solana:
+
+1. **Token with CT Extension** - Token-2022 mint with ConfidentialTransferMint enabled
+2. **Public Balance** - Users hold tokens (visible for demo purposes)
+3. **Access Control** - Generate proofs to verify eligibility without revealing exact balance
+4. **Privacy UX** - Demonstrates the user experience of confidential access
+
+**Note:** Full confidential transfer implementation (deposit→apply→transfer→withdraw with ZK proofs) requires Rust libraries not available in TypeScript. See [TYPESCRIPT_LIMITATIONS.md](/TYPESCRIPT_LIMITATIONS.md) for details.
+
+
+## Use Cases
+
+-  Event access without revealing ticket tier
+-  Community membership verification without exposing holdings
+-  Discount eligibility without showing balance
+-  Early access programs with privacy preservation
+-  VIP perks without wealth disclosure
+
+## Tech Stack
+
+- **Next.js 14** -
+- **Solana Web3.js**
+- **SPL Token** 
+- **Framer Motion** 
+- **Tailwind CSS** -
+
+## Quick Start
+
+### First step: Create the Token (Required First before running demo!)
+
+```bash
+# Install dependencies
+npm install
+
+# Create PASS token with confidential transfers
+npm run setup:token
+
+# Verify setup
+./verify-setup.sh
+```
+
+This creates:
+- Token-2022 mint with confidential transfer extension
+- Mint authority keypair (saved to `.keys/`)
+- Token configuration (saved to `token-config.json`)
+
+See [token.md](/token.md) for detailed instructions.
+
+### Run the Demo
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+**Having wallet connection issues?** Run the fix script:
+```bash
+./fix-wallet.sh
+```
+
+This will:
+- Clean all build artifacts
+- Reinstall dependencies
+- Verify wallet adapters are installed correctly
+
+### 2. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Common Issues & Fixes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Wallet button keeps loading / doesn't popup:**
+- Run `./fix-wallet.sh` to reinstall dependencies
+- Clear browser cache and refresh
+- Make sure Phantom extension is installed and enabled
+- Check that popup blockers aren't blocking Phantom
+- Ensure you're on Devnet in Phantom settings
 
-## Learn More
+**Hydration errors:**
+- Delete `.next` folder: `rm -rf .next`
+- Restart dev server: `npm run dev`
 
-To learn more about Next.js, take a look at the following resources:
+**"Duplicate keys" error:**
+- This is now fixed by using only Phantom adapter
+- If you still see it, run `./fix-wallet.sh`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Test the Demo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Click "Try the Demo"
+2. Connect your Phantom/Solflare wallet (Devnet)
+3. **Click "Claim Free PASS Tokens"** - Get 3 tokens (24hr cooldown)
+4. Wait for transaction confirmation  
+5. View your balance update
+6. Generate a zero-knowledge proof
+7. Get access to exclusive content
 
-## Deploy on Vercel
+**Token System:**
+- 3 PASS tokens per claim
+- 24-hour cooldown between claims
+- Automatic token account creation with confidential transfers
+- Manual airdrop: `npm run airdrop <address> <amount>`
+4. Generate a zero-knowledge proof
+5. Get access to exclusive content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Next Steps (Part A - Token Creation)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# PrivyPass
+To make this fully functional:
+
+1. Create PASS token mint with confidential transfer extension
+2. Set up token distribution mechanism
+3. Integrate actual ZK proof generation
+4. Deploy verification smart contract
+
+## Project Structure
+
+```
+private-pass/
+├── app/
+│   ├── page.tsx          
+│   ├── demo/
+│   │   └── page.tsx      # Main demo flow
+│   └── providers.tsx     
+├── components/
+│   ├── BalanceDisplay.tsx    
+│   ├── ProofGenerator.tsx    
+│   └── AccessGate.tsx        
+└── lib/
+    └── solana.ts         
+```
+

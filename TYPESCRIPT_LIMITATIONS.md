@@ -17,17 +17,25 @@ The Rust example demonstrates full confidential transfer setup with:
 
 ### What We Do:
 ✅ Create Token-2022 mint with ConfidentialTransferMint extension
+
 ✅ Create token accounts (associated token accounts)
+
 ✅ Mint tokens to **PUBLIC balance**
+
 ✅ Users can see their balance and generate proofs for access control
 
 ### What We Skip (For Now):
-❌ Full confidential transfer account setup (requires ZK proofs)
-❌ ElGamal/AES key generation in TypeScript
-❌ Deposit → pending balance flow
-❌ Apply pending balance
-❌ Confidential transfer between accounts
-❌ Withdraw with range proofs
+Full confidential transfer account setup (requires ZK proofs)
+
+ElGamal/AES key generation in TypeScript
+
+Deposit → pending balance flow
+
+Apply pending balance
+
+Confidential transfer between accounts
+
+Withdraw with range proofs
 
 ### Why This Still Works for the Demo:
 
@@ -74,7 +82,7 @@ Generate "Proof" (Simulated for now)
 Grant Access 
 ```
 
-## What Users See
+## Users should be to see:
 
 - Token exists with CT extension
 - Balance is visible (public balance)
@@ -86,19 +94,14 @@ Grant Access
 
 ## Future Implementation Options
 
-### Option 1: Wallet Integration
-Let wallets handle the confidential transfer operations:
-- Phantom/Solflare add CT support
-- Users deposit/apply/transfer through wallet UI
-- Our app just checks balance
 
-### Option 2: Rust Backend (This appears to be the best option at the moment)
+### Option 1: Rust Backend (This appears to be the best option at the moment)
 Build a Rust microservice:
 - Handles ZK proof generation
 - Manages confidential operations
 - Frontend calls Rust API
 
-### Option 3: Wait for JS Libraries
+### Option 2: Wait for JS Libraries
 Monitor for TypeScript implementations of:
 - `@solana/zk-sdk` (doesn't exist yet)
 - `@solana/confidential-transfer-proofs` (doesn't exist yet)

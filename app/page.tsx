@@ -14,15 +14,15 @@ export default function Home() {
         className="text-center max-w-4xl mx-auto"
       >
         <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-solana-purple to-solana-green bg-clip-text text-transparent">
-          Prove You Belong.
+          Prove Your Access.
         </h1>
         <h2 className="text-4xl md:text-6xl font-bold mb-8">
-          Keep Your Bag Private.
+          Keep Your Holdings Private.
         </h2>
         
         <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto">
           Token-gated access powered by zero-knowledge proofs on Solana. 
-          Show you're eligible without revealing your balance.
+          Prove your eligibility without revealing your balance.
         </p>
       </motion.div>
 
@@ -37,13 +37,13 @@ export default function Home() {
         <FeatureCard
           icon="✨"
           title="Zero-Knowledge Proofs"
-          description="Prove you meet requirements without revealing exact amounts. Math, not trust."
+          description="Prove you meet requirements without revealing exact amounts."
           delay={0.4}
         />
         <FeatureCard
           icon="🎫"
           title="Private Access"
-          description="Get exclusive perks, early access, or VIP status without exposing your wealth."
+          description="Get exclusive perks, early access, or VIP status while keeping your holdings private."
           delay={0.6}
         />
       </div>
@@ -56,7 +56,7 @@ export default function Home() {
       >
         <Link href="/demo">
           <button className="px-12 py-6 text-2xl font-bold rounded-2xl bg-gradient-to-r from-solana-purple to-solana-green hover:shadow-2xl hover:shadow-solana-purple/50 transition-all duration-300 hover:scale-105">
-            Try the Demo →
+            Try the Demo 
           </button>
         </Link>
       </motion.div>

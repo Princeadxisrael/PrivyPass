@@ -25,17 +25,12 @@ The Rust example demonstrates full confidential transfer setup with:
 ✅ Users can see their balance and generate proofs for access control
 
 ### What We Skip (For Now):
-Full confidential transfer account setup (requires ZK proofs)
-
-ElGamal/AES key generation in TypeScript
-
-Deposit → pending balance flow
-
-Apply pending balance
-
-Confidential transfer between accounts
-
-Withdraw with range proofs
+- Full confidential transfer account setup (requires ZK proofs)
+- ElGamal/AES key generation in TypeScript
+- Deposit → pending balance flow
+- Apply pending balance
+- Confidential transfer between accounts
+- Withdraw with range proofs
 
 ### Why This Still Works for the Demo:
 

@@ -1,4 +1,4 @@
-# Private Pass 🔐
+# Private Pass
 
 Token-gated access with zero-knowledge proofs on Solana. Prove your access while being fully private.
 
@@ -20,15 +20,15 @@ This demo showcases the **concept** of confidential token-gated access on Solana
 -  Community membership verification without exposing holdings
 -  Discount eligibility without showing balance
 -  Early access programs with privacy preservation
--  VIP perks without wealth disclosure
+-  VIP perks without holdings disclosure
 
 ## Tech Stack
 
-- **Next.js 14** -
+- **Next.js 14** 
 - **Solana Web3.js**
 - **SPL Token** 
 - **Framer Motion** 
-- **Tailwind CSS** -
+- **Tailwind CSS** 
 
 ## Quick Start
 

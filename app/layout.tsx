@@ -7,8 +7,8 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Private Pass | Prove Without Revealing",
-  description: "Token-gated access with zero-knowledge proofs on Solana. Prove you belong without revealing your balance.",
+  title: "Private Pass | Prove Your Holdings Privately on Solana",
+  description: "Token-gated access with zero-knowledge proofs on Solana. Prove your holdings without revealing your balance.",
 };
 
 export default function RootLayout({

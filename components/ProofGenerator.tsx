@@ -33,10 +33,10 @@ export default function ProofGenerator({ onProofGenerated }: ProofGeneratorProps
       <div className="glass-hover p-6 rounded-xl">
         <h3 className="text-xl font-bold mb-3 text-solana-green">How it Works</h3>
         <ul className="space-y-2 text-gray-400 text-sm">
-          <li>✓ You create a zero-knowledge proof that proves: "I have ≥ 1 token"</li>
-          <li>✓ The proof is cryptographically verifiable</li>
-          <li>✓ Nobody learns your exact balance</li>
-          <li>✓ You get access without revealing wealth</li>
+          <li> Create a zero-knowledge proof that proves your holdings</li>
+          <li> The proof is cryptographically verifiable</li>
+          <li> Your exact balance is never revealed</li>
+          <li> You get access without exposing your assets</li>
         </ul>
       </div>
 
@@ -48,7 +48,7 @@ export default function ProofGenerator({ onProofGenerated }: ProofGeneratorProps
           onClick={generateProof}
           className="w-full py-6 text-xl font-bold rounded-xl bg-gradient-to-r from-solana-purple to-solana-green hover:shadow-2xl hover:shadow-solana-purple/50 transition-all duration-300"
         >
-          Generate Zero-Knowledge Proof
+          Generate Pass Proof
         </motion.button>
       ) : (
         <motion.div
@@ -84,7 +84,7 @@ export default function ProofGenerator({ onProofGenerated }: ProofGeneratorProps
         transition={{ delay: 0.3 }}
         className="text-center text-sm text-gray-500"
       >
-        🔐 Your balance never leaves your wallet. All computation happens locally.
+        Your balance is always private with pass.
       </motion.div>
     </div>
   );

@@ -29,13 +29,12 @@ export default function AccessGate() {
           transition={{ delay: 0.2, type: "spring" }}
           className="inline-block text-8xl mb-4"
         >
-          🎉
         </motion.div>
         <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-solana-purple to-solana-green bg-clip-text text-transparent">
           Access Granted!
         </h2>
         <p className="text-xl text-gray-400">
-          You've proven eligibility without revealing your balance
+          Access Proven. Your balance remains private.
         </p>
       </motion.div>
 
@@ -68,8 +67,8 @@ export default function AccessGate() {
 
         <div className="pt-6 border-t border-gray-700">
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <span className="text-green-400">✓</span>
-            <span>Proof verified on-chain • Your balance remains private</span>
+            <span className="text-green-400"></span>
+            <span>Proof verified • Your balance remains private</span>
           </div>
         </div>
       </motion.div>
@@ -81,9 +80,9 @@ export default function AccessGate() {
         transition={{ delay: 0.6 }}
         className="mt-6 grid grid-cols-3 gap-4"
       >
-        <StatCard label="Proofs Generated" value="1,247" />
-        <StatCard label="Privacy Protected" value="100%" />
-        <StatCard label="Access Granted" value="Fast" />
+        <StatCard label="Proof" value="1,247" />
+        <StatCard label="Privacy" value="100%" />
+        <StatCard label="Protection" value="Fast" />
       </motion.div>
     </div>
   );

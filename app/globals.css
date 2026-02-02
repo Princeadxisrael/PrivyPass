@@ -4,8 +4,8 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 10, 10, 20;
-  --background-end-rgb: 15, 15, 35;
+  --background-start-rgb: 1, 15, 38;
+  --background-end-rgb: 2, 43, 79;
 }
 
 body {
@@ -23,11 +23,13 @@ body {
   background: linear-gradient(135deg, #9945FF 0%, #14F195 100%) !important;
   border: none !important;
   transition: all 0.3s ease !important;
+  cursor: pointer !important;
 }
 
 .wallet-adapter-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(153, 69, 255, 0.3);
+  cursor: pointer !important;
 }
 
 /* Glassmorphism utility */
@@ -45,5 +47,45 @@ body {
   .glass-hover:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(153, 69, 255, 0.5);
+    transform: translateY(-2px);
   }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .wallet-adapter-modal {
+    max-width: 90vw !important;
+    padding: 24px !important;
+  }
+  
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.875rem !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #14F195 0%, #9945FF 100%);
 }

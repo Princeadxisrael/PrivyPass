@@ -46,3 +46,4 @@ next-env.d.ts
 !package.json
 !tsconfig.json
 !token-config.json
+.env*.local

@@ -16,69 +16,76 @@ export default function DemoPage() {
   return (
     <main className="min-h-screen p-8">
       {/* Header */}
-      <div className="max-w-6xl mx-auto mb-8">
-        <Link href="/" className="text-solana-purple hover:text-solana-green transition-colors">
-          ← Back to Home
+      <div className="max-w-6xl mx-auto mb-12">
+        <Link href="/">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-3 rounded-full bg-gradient-to-r from-[#14F195] to-[#00D4FF] text-white font-bold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300"
+          >
+            ← Back to Home
+          </motion.button>
         </Link>
       </div>
 
-      {/* Main Content */}
+<div className="sticky top-6 flex justify-end z-[1000] opacity-90 hover:opacity-100 transition-opacity">
+  <WalletButton />
+</div>
+
+      {/* Main */}
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-solana-purple to-solana-green bg-clip-text text-transparent">
             Private Access Demo
           </h1>
           <p className="text-xl text-gray-400">
-            Connect your wallet to experience zero-knowledge access control
+            Connect your wallet to experience zero-knowledge access 
           </p>
         </motion.div>
 
-        {/* Step 1: Connect Wallet */}
-        <div className="mb-8">
-          <StepCard number={1} title="Connect Your Wallet" active={!connected}>
-            <div className="flex justify-center">
-              <WalletButton />
-            </div>
+        {/* Connect Wallet */}
+        <div className="mb-12">
+          <StepCard  title="Connect Wallet" active={!connected} children={undefined}>
           </StepCard>
         </div>
 
-        {/* Step 2: View Balance */}
+        {/*  View Balance */}
         <AnimatePresence>
           {connected && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="mb-8"
+              className="mb-12"
             >
-              <StepCard number={2} title="Your Encrypted Balance" active={connected && !hasProof}>
+              <StepCard  title="Your Token Balance" active={connected && !hasProof}>
                 <BalanceDisplay />
               </StepCard>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Step 3: Generate Proof */}
+        {/*  Generate Proof */}
         <AnimatePresence>
           {connected && !hasProof && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="mb-8"
+              className="mb-12"
             >
-              <StepCard number={3} title="Prove Eligibility" active={connected && !hasProof}>
+              <StepCard  title="Prove Eligibility" active={connected && !hasProof}>
                 <ProofGenerator onProofGenerated={() => setHasProof(true)} />
               </StepCard>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Step 4: Access Granted */}
+        {/* Access Granted */}
         <AnimatePresence>
           {hasProof && (
             <motion.div
@@ -86,7 +93,7 @@ export default function DemoPage() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
             >
-              <StepCard number={4} title="Access Granted" active={hasProof}>
+              <StepCard  title="Access Granted" active={hasProof}>
                 <AccessGate />
               </StepCard>
             </motion.div>
@@ -99,30 +106,31 @@ export default function DemoPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="max-w-4xl mx-auto mt-16 text-center text-gray-500 text-sm"
+        className="max-w-4xl mx-auto mt-20 text-center text-gray-500 text-sm"
       >
         <p>This demo uses Solana Devnet. No real tokens are involved.</p>
-        <p className="mt-2">Need test tokens? DM us on Twitter for an airdrop.</p>
       </motion.div>
     </main>
   );
 }
 
 function StepCard({ 
-  number, 
+  // number, 
   title, 
   children, 
   active 
 }: { 
-  number: number; 
+  // number: number; 
   title: string; 
   children: React.ReactNode;
   active: boolean;
 }) {
   return (
     <motion.div
-      className={`glass p-8 rounded-2xl transition-all duration-300 ${
-        active ? 'border-solana-purple shadow-lg shadow-solana-purple/20' : 'opacity-60'
+      className={`p-8 rounded-3xl transition-all duration-300 border-2 overflow-visible ${
+        active 
+          ? 'border-solana-purple shadow-xl shadow-solana-purple/30' 
+          : 'border-transparent opacity-60'
       }`}
     >
       <div className="flex items-center gap-4 mb-6">
@@ -131,7 +139,7 @@ function StepCard({
             ? 'bg-gradient-to-r from-solana-purple to-solana-green' 
             : 'bg-gray-700'
         }`}>
-          {number}
+          {/* {number} */}
         </div>
         <h2 className="text-2xl font-bold">{title}</h2>
       </div>

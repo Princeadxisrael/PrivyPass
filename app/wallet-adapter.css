@@ -1,11 +1,10 @@
 /* Custom Wallet Adapter Styles */
-/* Use this if the default styles cause import issues */
 
 .wallet-adapter-button {
   background-color: transparent;
   border: none;
   color: #fff;
-  cursor: pointer;
+  cursor: pointer !important;
   display: flex;
   align-items: center;
   font-family: inherit;
@@ -22,11 +21,12 @@
 .wallet-adapter-button:not([disabled]):hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(153, 69, 255, 0.3);
+  cursor: pointer !important;
 }
 
 .wallet-adapter-button[disabled] {
   opacity: 0.6;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 .wallet-adapter-button-start-icon,
@@ -36,6 +36,90 @@
   margin: 0 8px;
 }
 
+.wallet-adapter-button-end-icon {
+  margin-left: auto;
+}
+
+/* Wallet Dropdown Container */
+.wallet-adapter-dropdown {
+  position: relative;
+  /* display: inline-block; */
+  z-index: 50;
+}
+
+/* Wallet Dropdown List - CRITICAL: Make it visible! */
+.wallet-adapter-dropdown-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  border: 1px solid rgba(153, 69, 255, 0.3);
+  border-radius: 16px;
+  padding: 8px;
+  list-style: none;
+  z-index: 9999 !important;
+  min-width: 240px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  margin: 0;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.wallet-adapter-dropdown-list-item {
+  cursor: pointer !important;
+  padding: 14px 18px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.wallet-adapter-dropdown-list-item:hover {
+  background: rgba(153, 69, 255, 0.3);
+  cursor: pointer !important;
+}
+
+.wallet-adapter-dropdown-list-item svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Copy Address specific styling */
+.wallet-adapter-dropdown-list-item:first-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+/* Change Wallet button styling */
+.wallet-adapter-dropdown-list-item:nth-child(2) {
+  color: #14F195;
+}
+
+/* Disconnect button styling */
+.wallet-adapter-dropdown-list-item:last-child {
+  color: #ff6b6b;
+}
+
+/* Fix cursor for all clickable elements */
+.wallet-adapter-button,
+.wallet-adapter-dropdown-list-item,
+.wallet-adapter-modal-list button,
+button {
+  cursor: pointer !important;
+}
+
+/* Modal styles */
 .wallet-adapter-modal-wrapper {
   background: rgba(0, 0, 0, 0.8);
   bottom: 0;
@@ -87,7 +171,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   color: white;
-  cursor: pointer;
+  cursor: pointer !important;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -98,6 +182,7 @@
 .wallet-adapter-modal-list button:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(153, 69, 255, 0.5);
+  cursor: pointer !important;
 }
 
 .wallet-adapter-modal-button-close {
@@ -107,7 +192,20 @@
   background: transparent;
   border: none;
   color: white;
-  cursor: pointer;
+  cursor: pointer !important;
   font-size: 24px;
   padding: 8px;
+}
+
+.wallet-adapter-modal-button-close:hover {
+  cursor: pointer !important;
+  opacity: 0.7;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .wallet-adapter-dropdown-list {
+    right: auto;
+    left: 0;
+  }
 }

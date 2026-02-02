@@ -107,7 +107,7 @@ export default function BalanceDisplay() {
           </span>
         </div>
         <p className="text-sm text-yellow-500/80">
-          💡 This is your decrypted balance visible only to you via your wallet.
+        This is your decrypted balance visible only to you via your wallet.
         </p>
       </motion.div>
 
@@ -164,7 +164,7 @@ export default function BalanceDisplay() {
           <p className="text-green-400">✓ You're eligible! Proceed to generate proof.</p>
         ) : (
           <div>
-            <p className="text-red-400 mb-2">✗ You need at least 100 PASS tokens to access.</p>
+            <p className="text-red-400 mb-2"> You need at least 100 PASS tokens to access.</p>
             {balance !== null && balance < 100 && (
               <p className="text-sm text-gray-500">Click the claim button above to get your tokens!</p>
             )}

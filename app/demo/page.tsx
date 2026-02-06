@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useWallet } from '@solana/wallet-adapter-react';
 import Link from 'next/link';
@@ -12,6 +12,13 @@ import AccessGate from '@/components/AccessGate';
 export default function DemoPage() {
   const { connected } = useWallet();
   const [hasProof, setHasProof] = useState(false);
+
+    // Reset proof state when wallet disconnects
+  useEffect(() => {
+    if (!connected) {
+      setHasProof(false);
+    }
+  }, [connected]);
 
   return (
     <main className="min-h-screen p-8">
@@ -46,12 +53,17 @@ export default function DemoPage() {
             Connect your wallet to experience zero-knowledge access 
           </p>
         </motion.div>
-
+      
         {/* Connect Wallet */}
-        <div className="mb-12">
-          <StepCard  title="Connect Wallet" active={!connected} children={undefined}>
+        <AnimatePresence>
+        {!connected && (
+        
+        <motion.div>
+          <StepCard  title="Connect Wallet" active={true} children={undefined}>
           </StepCard>
-        </div>
+        </motion.div>
+        )}
+        </AnimatePresence>
 
         {/*  View Balance */}
         <AnimatePresence>
@@ -87,7 +99,7 @@ export default function DemoPage() {
 
         {/* Access Granted */}
         <AnimatePresence>
-          {hasProof && (
+          {hasProof && connected && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
